@@ -198,7 +198,7 @@ const sendWelcomeEmail = async ({ to, token }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Welcome to stockzenith</h2>
+    <h2>Welcome to Toptradexp</h2>
 
     <p>Let us know if this is really your email address, 
     to help us keep your account secure.
@@ -209,7 +209,7 @@ const sendWelcomeEmail = async ({ to, token }) => {
 
     <p>Your OTP is: ${speakeasy.totp({ secret: secret.base32, encoding: 'base32' })}</p>
     <p>Best wishes,</p>
-    <p>Stockzenith Team</p>
+    <p>Toptradexp Team</p>
 
     </html>
     
@@ -256,7 +256,7 @@ const resendWelcomeEmail = async ({ to, token }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Welcome to stockzenith</h2>
+    <h2>Welcome to Toptradexp</h2>
 
     <p>Let us know if this is really your email address, 
     to help us keep your account secure
@@ -267,7 +267,7 @@ const resendWelcomeEmail = async ({ to, token }) => {
 
     <p>Your OTP is: ${speakeasy.totp({ secret: secret.base32, encoding: 'base32' })}</p>
     <p>Best wishes,</p>
-    <p>Stockzenith Team Team</p>
+    <p>Toptradexp  Team</p>
 
     </html>
     
