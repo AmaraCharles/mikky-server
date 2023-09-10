@@ -126,6 +126,16 @@ module.exports = router;
 
 // Your registration route
 
+// Define your user schema
+const userSchema = new mongoose.Schema({
+  // Other user properties...
+
+  referredUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+});
+
+// Create your User model
+const User = mongoose.model('User', userSchema);
+
 // Your registration route
 router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, country, referralCode } = req.body;
@@ -145,7 +155,10 @@ router.post("/register", async (req, res) => {
     let referrer = null;
     if (referralCode) {
       referrer = await User.findOne({ referralCode });
-      // You can optionally handle the case where the referral code is invalid here.
+      // You can remove the code that checks for a valid referral code here
+
+      // Optionally, you can handle the case where the referral code is invalid
+      // by setting referrer to null and proceeding with registration
     }
 
     // Create a new user with referral information
