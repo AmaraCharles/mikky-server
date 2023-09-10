@@ -125,7 +125,7 @@ function generateReferralCode(length) {
 module.exports = router;
 
 // Your registration route
-
+const mongoose = require('mongoose');
 // Define your user schema
 const userSchema = new mongoose.Schema({
   // Other user properties...
