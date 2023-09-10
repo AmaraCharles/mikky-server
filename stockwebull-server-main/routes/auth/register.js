@@ -121,12 +121,16 @@ function generateReferralCode(length) {
   return code;
 }
 
+
+module.exports = router;
+
+// Your registration route
 router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, country, referralCode } = req.body;
 
   try {
     // Check if any user has that email
-    const user = await UsersDatabase.findOne({ email });
+    const user = await User.findOne({ email });
 
     if (user) {
       return res.status(400).json({
@@ -138,7 +142,7 @@ router.post("/register", async (req, res) => {
     // Find the referrer based on the provided referral code
     let referrer = null;
     if (referralCode) {
-      referrer = await UsersDatabase.findOne({ referralCode });
+      referrer = await User.findOne({ referralCode });
       if (!referrer) {
         return res.status(400).json({
           success: false,
@@ -178,10 +182,11 @@ router.post("/register", async (req, res) => {
       isDisabled: false,
       referralCode: generateReferralCode(6), // Generate a referral code for the new user
       referredBy: referrer ? referrer._id : null, // Store the ID of the referrer if applicable
+      referredUsers: [], // Initialize the referredUsers property as an empty array
     };
 
     // Create the new user in the database
-    const createdUser = await UsersDatabase.create(newUser);
+    const createdUser = await User.create(newUser);
     const token = uuidv4();
     sendWelcomeEmail({ to: email, token });
 
@@ -200,5 +205,3 @@ router.post("/register", async (req, res) => {
     });
   }
 });
-
-module.exports = router;

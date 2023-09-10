@@ -17,6 +17,9 @@ const UsersSchema = new mongoose.Schema({
   referralCode:{
     type:String,
   },
+  referredUsers:{
+    type:Array,
+  },
   country: {
     type: String,
     required: true,
