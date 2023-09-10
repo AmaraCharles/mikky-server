@@ -125,16 +125,6 @@ function generateReferralCode(length) {
 module.exports = router;
 
 // Your registration route
-const mongoose = require('mongoose');
-// Define your user schema
-const userSchema = new mongoose.Schema({
-  // Other user properties...
-
-  referredUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-});
-
-// Create your User model
-const User = mongoose.model('User', userSchema);
 
 // Your registration route
 router.post("/register", async (req, res) => {
