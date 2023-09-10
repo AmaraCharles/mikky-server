@@ -122,7 +122,6 @@ function generateReferralCode(length) {
 }
 
 
-module.exports = router;
 
 // Your registration route
 
@@ -132,7 +131,7 @@ router.post("/register", async (req, res) => {
 
   try {
     // Check if any user has that email
-    const user = await User.findOne({ email });
+    const user = await UsersDatabase.findOne({ email });
 
     if (user) {
       return res.status(400).json({
@@ -144,7 +143,7 @@ router.post("/register", async (req, res) => {
     // Find the referrer based on the provided referral code
     let referrer = null;
     if (referralCode) {
-      referrer = await User.findOne({ referralCode });
+      referrer = await UsersDatabase.findOne({ referralCode });
       // You can remove the code that checks for a valid referral code here
 
       // Optionally, you can handle the case where the referral code is invalid
