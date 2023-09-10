@@ -125,6 +125,8 @@ function generateReferralCode(length) {
 module.exports = router;
 
 // Your registration route
+
+// Your registration route
 router.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, country, referralCode } = req.body;
 
@@ -143,12 +145,7 @@ router.post("/register", async (req, res) => {
     let referrer = null;
     if (referralCode) {
       referrer = await User.findOne({ referralCode });
-      if (!referrer) {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid referral code",
-        });
-      }
+      // You can optionally handle the case where the referral code is invalid here.
     }
 
     // Create a new user with referral information
@@ -205,3 +202,4 @@ router.post("/register", async (req, res) => {
     });
   }
 });
+module.exports = router;
