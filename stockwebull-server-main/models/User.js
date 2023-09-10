@@ -20,6 +20,9 @@ const UsersSchema = new mongoose.Schema({
   referredUsers:{
     type:Array,
   },
+  referredBY:{
+    type:Object,
+  },
   country: {
     type: String,
     required: true,
