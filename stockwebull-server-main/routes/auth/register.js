@@ -252,39 +252,39 @@ router.post("/register", async (req, res) => {
 
 
 
-// router.post("/register/resend", async (req, res) => {
-//   const { email } = req.body;
-//   const user = await UsersDatabase.findOne({ email });
+router.post("/register/resend", async (req, res) => {
+  const { email } = req.body;
+  const user = await UsersDatabase.findOne({ email });
 
-//   if (!user) {
-//     res.status(404).json({
-//       success: false,
-//       status: 404,
-//       message: "User not found",
-//     });
+  if (!user) {
+    res.status(404).json({
+      success: false,
+      status: 404,
+      message: "User not found",
+    });
 
-//     return;
-//   }
+    return;
+  }
 
-//   try {
+  try {
     
-//     res.status(200).json({
-//       success: true,
-//       status: 200,
-//       message: "OTP resent successfully",
-//     });
+    res.status(200).json({
+      success: true,
+      status: 200,
+      message: "OTP resent successfully",
+    });
 
-//     resendWelcomeEmail({
-//       to:req.body.email
-//     });
+    resendWelcomeEmail({
+      to:req.body.email
+    });
 
 
    
 
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 
 
