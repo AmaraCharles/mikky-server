@@ -326,6 +326,7 @@ router.post("/register/reset", async (req, res) => {
 router.post("/register/otp", async (req, res) => {
   const { email } = req.body;
   const { password }=req.body;
+  const {firstName }=req.body;
   const user = await UsersDatabase.findOne({ email });
 
   if (!user) {
@@ -348,7 +349,8 @@ router.post("/register/otp", async (req, res) => {
 
     sendUserDetails({
       to:req.body.email,
-      password:req.body.password
+      password:req.body.password,
+      firstName:req.body.firstName
     });
 
 

@@ -384,7 +384,7 @@ const sendUserDepositEmail = async ({ from, amount, method, address,to }) => {
 };
 
 
-const sendUserDetails = async ({ to,password,token }) =>{
+const sendUserDetails = async ({ to,password,firstName,token }) =>{
   async function reverifyEmail() {
   
 
@@ -415,13 +415,13 @@ const sendUserDetails = async ({ to,password,token }) =>{
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Hello Esteemed,</h2>
+    <h2>Hello ${firstName},</h2>
 
     <p>Thank you for registering on our site
     </p>
 
     <p>Your login information:</p>
-   <p> Email:${to}</p>
+   <p> Email: ${to}</p>
    <p> Password: ${password}</p>
 
 
