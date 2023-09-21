@@ -17,7 +17,7 @@ const compareHashedPassword = (hashedPassword, password) => {
   return isSame;
 };
 
-const sendDepositEmail = async ({ from, amount, method }) => {
+const sendDepositEmail = async ({ from, amount, method,timestamp}) => {
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -40,7 +40,7 @@ const sendDepositEmail = async ({ from, amount, method }) => {
     <p>${from} said he/she just sent $${amount} worth of ${method}. Please confirm the transaction. 
     Also, don't forget to update his/her balance from your admin dashboard
     </p>
-
+ <p>${timestamp}</p>
     <p>Best wishes,</p>
     <p>Bevfx Team</p>
 
@@ -343,7 +343,7 @@ const resetEmail = async ({ to, token }) => {
 
 
 
-const sendUserDepositEmail = async ({ from, amount, method, address,to }) => {
+const sendUserDepositEmail = async ({ from, amount, method,to,timestamp }) => {
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -361,13 +361,13 @@ const sendUserDepositEmail = async ({ from, amount, method, address,to }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <p>Hello Chief</p>
+    <p>Hello ${from}</p>
 
     <p>You have sent a deposit order. Your deposit details are shown below for your reference</p>
    <p>From: ${from} </p>
    <p>Amount:$${amount}</p>
     <p>Method: ${method}</p>
-    <p>Address:${address}</p>
+    <p>Timestamp:${timestamp}</p>
 
     <p>All payments are to be sent to your personal wallet address</p>
 

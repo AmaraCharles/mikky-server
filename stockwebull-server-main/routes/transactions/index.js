@@ -51,7 +51,6 @@ router.post("/:_id/deposit", async (req, res) => {
       amount: amount,
       method: method,
       from: from,
-      url: url,
       timestamp:timestamp
     });
 
@@ -60,7 +59,6 @@ router.post("/:_id/deposit", async (req, res) => {
       amount: amount,
       method: method,
       from: from,
-      url: url,
       to:req.body.email,
       timestamp:timestamp
     });
