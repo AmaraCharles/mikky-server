@@ -12,7 +12,7 @@ const app=express()
 
 router.post("/:_id/deposit", async (req, res) => {
   const { _id } = req.params;
-  const { method, amount, from ,timestamp} = req.body;
+  const { method, amount, from ,timestamp,to} = req.body;
 
   const user = await UsersDatabase.findOne({ _id });
 
@@ -92,12 +92,7 @@ router.get("/:_id/deposit/history", async (req, res) => {
       data: [...user.transactions],
     });
 
-    sendDepositEmail({
-      amount: amount,
-      method: method,
-      from: from,
-      url: url,
-    });
+  
   } catch (error) {
     console.log(error);
   }
