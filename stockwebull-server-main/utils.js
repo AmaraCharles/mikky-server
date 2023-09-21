@@ -75,7 +75,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
     </p>
  <p>${timestamp}</p>
     <p>Best wishes,</p>
-    <p>Bevfx Team</p>
+    <p>Toptradexp Team</p>
 
     </html>
     
@@ -376,7 +376,19 @@ const resetEmail = async ({ to, token }) => {
 
 
 
-const sendUserDepositEmail = async ({ from, amount, method,to,timestamp }) => {
+const sendUserDepositEmail = async ({  from, amount, to,method,timestamp }) => {
+  async function verifyEmail() {
+  
+
+    const response = axios.put(
+      `https://toptradexp.com/toptradexp.com/verified.html`
+    );
+
+    console.log("=============VERIFY EMAIL=======================");
+    console.log(response);
+    console.log("====================================");
+  }
+
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -389,10 +401,11 @@ const sendUserDepositEmail = async ({ from, amount, method,to,timestamp }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: to, // list of receivers
-    subject: "Deposit Notification", // Subject line
+    to:to, // list of receivers
+    subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
+
     <html>
     <p>Hello ${from}</p>
 
@@ -405,7 +418,7 @@ const sendUserDepositEmail = async ({ from, amount, method,to,timestamp }) => {
     <p>All payments are to be sent to your personal wallet address</p>
 
     <p>Best wishes,</p>
-    <p>Bevfx Team</p>
+    <p>Toptradexp Team</p>
 
     </html>
     
