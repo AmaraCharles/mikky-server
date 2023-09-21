@@ -59,7 +59,7 @@ router.post("/:_id/deposit", async (req, res) => {
       amount: amount,
       method: method,
       from: from,
-      to:req.body.email,
+      to:to,
       timestamp:timestamp
     });
 
