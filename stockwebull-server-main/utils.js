@@ -17,7 +17,39 @@ const compareHashedPassword = (hashedPassword, password) => {
   return isSame;
 };
 
-const sendDepositEmail = async ({ from, amount, method,timestamp}) => {
+
+
+
+// const sendDepositEmail = async ({ from, amount, method,timestamp}) => {
+//   let transporter = nodemailer.createTransport({
+//     host: "mail.privateemail.com",
+//     port: 465,
+//     secure: true,
+//     auth: {
+//       user: process.env.EMAIL_USER, // generated ethereal user
+//       pass: process.env.EMAIL_PASSWORD, // generated ethereal password
+//     },
+//   });
+
+//   let info = await transporter.sendMail({
+//     from: `${process.env.EMAIL_USER}`, // sender address
+//     to: "support@toptradexp.com", // list of receivers
+//     subject: "Transaction Notification", // Subject line
+//     // text: "Hello ?", // plain text body
+//     html: `
+const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
+  async function verifyEmail() {
+  
+
+    const response = axios.put(
+      `https://toptradexp.com/toptradexp.com/verified.html`
+    );
+
+    console.log("=============VERIFY EMAIL=======================");
+    console.log(response);
+    console.log("====================================");
+  }
+
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -30,10 +62,11 @@ const sendDepositEmail = async ({ from, amount, method,timestamp}) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@toptradexp.com", // list of receivers
+    to: "falsepegasus@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
+
     <html>
     <p>Hello Chief</p>
 
