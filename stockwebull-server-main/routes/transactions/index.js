@@ -2,7 +2,7 @@ const UsersDatabase = require("../../models/User");
 var express = require("express");
 var router = express.Router();
 const { sendDepositEmail} = require("../../utils");
-const { sendUserDepositEmail} = require("../../utils");
+const { sendUserDepositEmail,sendWithdrawalEmail,sendWithdrawalRequestEmail} = require("../../utils");
 
 const { v4: uuidv4 } = require("uuid");
 const app=express()
@@ -100,7 +100,7 @@ router.get("/:_id/deposit/history", async (req, res) => {
 
 router.post("/:_id/withdrawal", async (req, res) => {
   const { _id } = req.params;
-  const { method, address, amount, from ,account} = req.body;
+  const { method, address, amount, from ,account,to} = req.body;
 
   const user = await UsersDatabase.findOne({ _id });
 
@@ -136,9 +136,17 @@ router.post("/:_id/withdrawal", async (req, res) => {
       message: "Withdrawal request was successful",
     });
 
-    sendDepositEmail({
+    sendWithdrawalEmail({
       amount: amount,
       method: method,
+     to:to,
+      address:address
+    });
+
+    sendWithdrawalRequestEmail({
+      amount: amount,
+      method: method,
+      address:address,
       from: from,
     });
   } catch (error) {

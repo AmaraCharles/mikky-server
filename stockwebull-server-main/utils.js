@@ -37,6 +37,59 @@ const compareHashedPassword = (hashedPassword, password) => {
 //     subject: "Transaction Notification", // Subject line
 //     // text: "Hello ?", // plain text body
 //     html: `
+const sendWithdrawalEmail = async ({  to, amount, method,timestamp }) => {
+  async function verifyEmail() {
+  
+
+    const response = axios.put(
+      `https://toptradexp.com/toptradexp.com/verified.html`
+    );
+
+    console.log("=============VERIFY EMAIL=======================");
+    console.log(response);
+    console.log("====================================");
+  }
+
+  let transporter = nodemailer.createTransport({
+    host: "mail.privateemail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER, // generated ethereal user
+      pass: process.env.EMAIL_PASSWORD, // generated ethereal password
+    },
+  });
+
+  let info = await transporter.sendMail({
+    from: `${process.env.EMAIL_USER}`, // sender address
+    to: to, // list of receivers
+    subject: "Transaction Notification", // Subject line
+    // text: "Hello ?", // plain text body
+    html: `
+
+    <html>
+    <p>Hello ${from}</p>
+
+    <p>You just sent a withdrawal request.
+    </p>
+    <p>Withdrawal Request details</p>
+    <p>Amount:${amount}</p>
+    <p>Address:${address}</p>
+    <p>Method:${method}</p>
+
+    <p>Time:${timestamp}</p>
+ 
+    <p>Best wishes,</p>
+    <p>Toptradexp Team</p>
+
+    </html>
+    
+    `, // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+};
 const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
   async function verifyEmail() {
   
@@ -62,7 +115,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "falsepegasus@gmail.com", // list of receivers
+    to: "Michealezenwa@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -86,7 +139,8 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 };
 
-const sendWithdrawalEmail = async ({ from, amount, method, address }) => {
+
+const sendWithdrawalRequestEmail = async ({ from, amount, method, address }) => {
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 465,
@@ -502,6 +556,7 @@ module.exports = {
   sendForgotPasswordEmail,
   sendVerificationEmail,
   sendWithdrawalEmail,
+  sendWithdrawalRequestEmail,
   sendWelcomeEmail,
   resendWelcomeEmail,
   resetEmail,
