@@ -73,18 +73,19 @@ router.post("/register", async (req, res) => {
       },
       verified: false,
       isDisabled: false,
+      referredUsers:[],
       referralCode: generateReferralCode(6), // Generate a referral code for the new user
-      referredBy: referrer ? referrer._id : null, // Store the ID of the referrer if applicable
+      referredBy:  referrer._id, // Store the ID of the referrer if applicable
     };
 
     // Generate a referral code for the new user only if referralCode is provided
-    if (referralCode) {
-      newUser.referralCode = generateReferralCode(6);
-    }
+    // if (referralCode) {
+    //   newUser.referralCode = generateReferralCode(6);
+    // }
 
     // If there's a referrer, update their referredUsers list
     if (referrer) {
-      newUser.referredBy = referrer._id;
+      // newUser.referredBy = referrer._id;
       referrer.referredUsers.push(newUser._id);
       await referrer.save();
     }
