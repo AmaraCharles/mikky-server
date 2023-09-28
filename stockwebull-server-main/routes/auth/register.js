@@ -81,7 +81,7 @@ router.post("/register", async (req, res) => {
     };
 
     if (referrer) {
-      newUser.referredBy.push (referrer.firstName);
+      newUser.referredBy=referrer.firstName;
       referrer.referredUsers.push(newUser.firstName);
       await referrer.save();
     }
