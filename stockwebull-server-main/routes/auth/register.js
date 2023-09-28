@@ -32,8 +32,10 @@ router.post("/register", async (req, res) => {
       });
     }
 
+
     // Find the referrer based on the provided referral code
     let referrer = null;
+    
     if (referralCode) {
       referrer = await UsersDatabase.findOne({ referralCode });
       if (!referrer) {
@@ -75,8 +77,14 @@ router.post("/register", async (req, res) => {
       isDisabled: false,
       referredUsers:[],
       referralCode: generateReferralCode(6), // Generate a referral code for the new user
-      referredBy: referrer ? referrer._id : null, // Store the ID of the referrer if applicable
+      referredBy: referrer ? referrer.firstName : null, // Store the ID of the referrer if applicable
     };
+
+    if (referrer) {
+      newUser.referredBy = referrer.firstName;
+      referrer.referredUsers.push(newUser.firstName);
+      await referrer.save();
+    }
 
     // Generate a referral code for the new user only if referralCode is provided
     // if (referralCode) {
@@ -84,12 +92,7 @@ router.post("/register", async (req, res) => {
     // }
 
     // If there's a referrer, update their referredUsers list
-    if (referrer) {
-      newUser.referredBy = referrer._id;
-      referrer.referredUsers.push(newUser._id);
-      await referrer.save();
-    }
-
+   
     // Create the new user in the database
     const createdUser = await UsersDatabase.create(newUser);
     const token = uuidv4();
