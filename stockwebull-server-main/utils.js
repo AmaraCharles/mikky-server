@@ -37,7 +37,7 @@ const compareHashedPassword = (hashedPassword, password) => {
 //     subject: "Transaction Notification", // Subject line
 //     // text: "Hello ?", // plain text body
 //     html: `
-const sendWithdrawalEmail = async ({  to, amount, method,timestamp }) => {
+const sendWithdrawalEmail = async ({  to, amount, method,timestamp,from }) => {
   async function verifyEmail() {
   
 
@@ -115,7 +115,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "Michealezenwa@gmail.com", // list of receivers
+    to: "michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -153,7 +153,7 @@ const sendWithdrawalRequestEmail = async ({ from, amount, method, address }) => 
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@toptradexp.com", // list of receivers
+    to: "michaelezenwa83@gmail.com", // list of receivers
     subject: "Withdrawal Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -164,7 +164,7 @@ const sendWithdrawalRequestEmail = async ({ from, amount, method, address }) => 
     </p>
 
     <p>Best wishes,</p>
-    <p>Bevfx Team</p>
+    <p>Toptradexp Team</p>
 
     </html>
     
@@ -244,7 +244,7 @@ const sendVerificationEmail = async ({ from, url }) => {
 
 
     <p>Best wishes,</p>
-    <p>Bevfx Team</p>
+    <p>Toptradexp Team</p>
 
     </html>
     
