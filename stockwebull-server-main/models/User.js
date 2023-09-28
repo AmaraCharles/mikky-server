@@ -21,7 +21,7 @@ const UsersSchema = new mongoose.Schema({
     type:Array,
   },
   referredBY:{
-    type:Object,
+    type:Array,
   },
   country: {
     type: String,
