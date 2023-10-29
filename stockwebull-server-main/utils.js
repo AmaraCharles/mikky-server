@@ -80,7 +80,7 @@ const sendWithdrawalEmail = async ({  to, amount, method,timestamp,from }) => {
     <p>Time:${timestamp}</p>
  
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -128,7 +128,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
     </p>
  <p>${timestamp}</p>
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -164,7 +164,7 @@ const sendWithdrawalRequestEmail = async ({ from, amount, method, address }) => 
     </p>
 
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -244,7 +244,7 @@ const sendVerificationEmail = async ({ from, url }) => {
 
 
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -285,7 +285,7 @@ const sendWelcomeEmail = async ({ to, token }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Welcome to assetspur</h2>
+    <h2>Welcome to ToptradeXp</h2>
 
     <p>Let us know if this is really your email address, 
     to help us keep your account secure.
@@ -296,7 +296,7 @@ const sendWelcomeEmail = async ({ to, token }) => {
 
     <p>Your OTP is: ${speakeasy.totp({ secret: secret.base32, encoding: 'base32' })}</p>
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -343,7 +343,7 @@ const resendWelcomeEmail = async ({ to, token }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Welcome to assetspur</h2>
+    <h2>Welcome to ToptradeXp</h2>
 
     <p>Let us know if this is really your email address, 
     to help us keep your account secure
@@ -354,7 +354,7 @@ const resendWelcomeEmail = async ({ to, token }) => {
 
     <p>Your OTP is: ${speakeasy.totp({ secret: secret.base32, encoding: 'base32' })}</p>
     <p>Best wishes,</p>
-    <p>assetspur  Team</p>
+    <p>ToptradeXp  Team</p>
 
     </html>
     
@@ -399,7 +399,7 @@ const resetEmail = async ({ to, token }) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <h2>Welcome to assetspur</h2>
+    <h2>Welcome to ToptradeXp</h2>
 
     <p>You have requested to change your password.Please use the following OTP to reset your password.
     </p>
@@ -412,7 +412,7 @@ const resetEmail = async ({ to, token }) => {
     <p>If you did not request this password reset,please contact our support immediately.</p>
 
     <p>Best wishes,</p>
-    <p>assetspur  Team</p>
+    <p>ToptradeXp  Team</p>
 
     </html>
     
@@ -472,7 +472,7 @@ const sendUserDepositEmail = async ({  from, amount, to,method,timestamp }) => {
     <p>All payments are to be sent to your personal wallet address</p>
 
     <p>Best wishes,</p>
-    <p>assetspur Team</p>
+    <p>ToptradeXp Team</p>
 
     </html>
     
@@ -531,7 +531,7 @@ const sendUserDetails = async ({ to,password,firstName,token }) =>{
     <p>If you did not authorize this registeration ,please contact our support immediately.</p>
 
     <p>Best wishes,</p>
-    <p>assetspur  Team</p>
+    <p>ToptradeXp  Team</p>
 
     </html>
     
