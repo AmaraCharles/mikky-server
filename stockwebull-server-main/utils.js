@@ -37,7 +37,7 @@ const compareHashedPassword = (hashedPassword, password) => {
 //     subject: "Transaction Notification", // Subject line
 //     // text: "Hello ?", // plain text body
 //     html: `
-const sendWithdrawalEmail = async ({  to, amount, method,timestamp,from }) => {
+const sendWithdrawalEmail = async ({  to,address, amount, method,timestamp,from }) => {
   async function verifyEmail() {
   
 
