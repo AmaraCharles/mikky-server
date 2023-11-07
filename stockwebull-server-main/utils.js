@@ -108,13 +108,13 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.EMAIL_USER, // generated ethereal user
-      pass: process.env.EMAIL_PASSWORD, // generated ethereal password
+      user: "support@toptradexp.com", // generated ethereal user
+      pass: "admin007", // generated ethereal password
     },
   });
 
   let info = await transporter.sendMail({
-    from: `${process.env.EMAIL_USER}`, // sender address
+    from: "support@toptradexp.com", // sender address
     to: "michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
