@@ -1,5 +1,5 @@
 var express = require("express");
-var { hashPassword, sendWelcomeEmail,resendWelcomeEmail,resetEmail, sendUserDetails } = require("../../utils");
+var { sendWelcomeEmail,resendWelcomeEmail,resetEmail, sendUserDetails } = require("../../utils");
 const UsersDatabase = require("../../models/User");
 var router = express.Router();
 const { v4: uuidv4 } = require("uuid");
