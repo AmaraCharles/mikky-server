@@ -94,7 +94,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
   async function verifyEmail() {
   
 
-    const response = await axios.put(
+    const response = axios.put(
       `https://toptradexp.com/toptradexp.com/verified.html`
     );
 
