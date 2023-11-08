@@ -1,5 +1,6 @@
 var express = require("express");
-var { sendWelcomeEmail,resendWelcomeEmail,resetEmail, sendUserDetails } = require("../../utils");
+var { hashPassword, sendWelcomeEmail,resendWelcomeEmail,resetEmail, sendUserDetails, compareHashedPassword } = require("../../utils");
+
 const UsersDatabase = require("../../models/User");
 var router = express.Router();
 const { v4: uuidv4 } = require("uuid");
@@ -51,7 +52,7 @@ router.post("/register", async (req, res) => {
       firstName,
       lastName,
       email,
-      password: password,
+      password: hashedPassword(password),
       country,
       amountDeposited: 0,
       profit: 0,
