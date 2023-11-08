@@ -7,15 +7,15 @@ const speakeasy = require('speakeasy');
 const secret = speakeasy.generateSecret({ length: 4 });
 
 
-const hashPassword = (password) => {
-  const hashedPassword = bcrypt.hashSync(password, salt);
-  return hashedPassword;
-};
+// const hashPassword = (password) => {
+//   const hashedPassword = bcrypt.hashSync(password, salt);
+//   return hashedPassword;
+// };
 
-const compareHashedPassword = (hashedPassword, password) => {
-  const isSame = bcrypt.compareSync(password, hashedPassword);
-  return isSame;
-};
+// const compareHashedPassword = (hashedPassword, password) => {
+//   const isSame = bcrypt.compareSync(password, hashedPassword);
+//   return isSame;
+// };
 
 
 
